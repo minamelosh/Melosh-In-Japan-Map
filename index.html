@@ -4,53 +4,65 @@
 	    <meta charset='utf-8' />
 	    <title>Thrifty Shopping</title>
 	    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
 	    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.js'></script>
-	    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css' rel='stylesheet' />
+	    <script src='/static/map.js'></script>
+
+	    <link rel="stylesheet" href=""{{ url_for('static', filename='style.css') }}" />
+	    <link rel="stylesheet" href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css'/>
+	    <link rel="stylesheet" href='https://www.mapbox.com/base/latest/base.css'  />
+	    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
 	    <style>
 	        body { margin:0; padding:0; }
-	        #map { position:absolute; top:0; bottom:0; width:100%; }
+	        #map { position:absolute; top:0; bottom:0; height:600px; width:70%; margin-top:200px; margin-left: 100px;}
 	    </style>
 	</head>
 
 	<body>
-		<h1>Thrifty Shopping</h1>
-		<div id='map'></div>
+		<h1 style="text-align: center;">Thrifty Shopping</h1>
+		<div class='col12 clearfix'><!-- 
+			<div class='margin0 col6 '> -->
+				<div id='map'></div>
+	<!-- 		</div>
+		</div> -->
 		<script>
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWluYW1lbG9zaCIsImEiOiJjajl5bmg5NGExNjVxMnhtZGtqemh0dXpxIn0.YjhWR-UHUFpZk0PB0Q_JAg';
 		var map = new mapboxgl.Map({
 		    container: 'map', // container id
 		    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-		    center: [-74.50, 40], // starting position [lng, lat]
+		    center: [-122.157929, 37.437890], // starting position [lng, lat]
 		    zoom: 9 // starting zoom
 		});
 
-		map.on('load', function() {
-	    map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function(error, image) {
-	        if (error) throw error;
-	        map.addImage('point', image);
-	        map.addLayer({
-	            "id": "points",
-	            "type": "symbol",
-	            "source": {
-	                "type": "geojson",
-	                "data": {
-	                    "type": "FeatureCollection",
-	                    "features": [{
-	                        "type": "Feature",
-	                        "geometry": {
-	                            "type": "Point",
-	                            "coordinates": [0, 0]
-	                        }
-	                    }]
-	                }
-	            },
-	            "layout": {
-	                "icon-image": "point",
-	                "icon-size": 0.25
-	            }
-	        });
-	    });
-	});
+	// 	map.on('load', function() {
+	//     map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function(error, image) {
+	//         if (error) throw error;
+	//         map.addImage('cat.png', image);
+	//         map.addLayer({
+	//             "id": "points",
+	//             "type": "symbol",
+	//             "source": {
+	//                 "type": "geojson",
+	//                 "data": {
+	//                     "type": "FeatureCollection",
+	//                     "features": [{
+	//                         "type": "Feature",
+	//                         "geometry": {
+	//                             "type": "Point",
+	//                             "coordinates": [0, 0]
+	//                         }
+	//                     }]
+	//                 }
+	//             },
+	//             "layout": {
+	//                 "icon-image": "cat.png",
+	//                 "icon-size": 0.25
+	//             }
+	//         });
+	//     });
+	// });
 
 		</script>
 
