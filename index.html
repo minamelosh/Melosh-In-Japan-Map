@@ -2,7 +2,7 @@
 <html>
 	<head>
 	    <meta charset='utf-8' />
-	    <title>Thrifty Shopping</title>
+	    <title>Mina's Japan Trip</title>
 	    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
 	    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.js'></script>
@@ -16,55 +16,188 @@
 
 	    <style>
 	        body { margin:0; padding:0; }
-	        #map { position:absolute; top:0; bottom:0; height:600px; width:70%; margin-top:200px; margin-left: 100px;}
+	        #map { position:absolute; top:0; bottom:0; height:600px; width:70%; margin-top:100px; margin-left: 100px;}
 	    </style>
 	</head>
 
 	<body>
-		<h1 style="text-align: center;">Thrifty Shopping</h1>
-		<div class='col12 clearfix'><!-- 
+		<style>
+		    .mapboxgl-popup {
+		        max-width: 400px;
+		        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+		    }
+		    .marker {
+			    display: block;
+			    border: none;
+			    border-radius: 50%;
+			    cursor: pointer;
+			    padding: 0;
+			}
+		</style>
+		<div id='map'></div>
+
+		<h1 style="text-align: center;">Mina's Japan Trip</h1>
+		<!-- h --><!-- 
 			<div class='margin0 col6 '> -->
 				<div id='map'></div>
 	<!-- 		</div>
 		</div> -->
+
 		<script>
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWluYW1lbG9zaCIsImEiOiJjajl5bmg5NGExNjVxMnhtZGtqemh0dXpxIn0.YjhWR-UHUFpZk0PB0Q_JAg';
+		
 		var map = new mapboxgl.Map({
-		    container: 'map', // container id
-		    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-		    center: [-122.157929, 37.437890], // starting position [lng, lat]
-		    zoom: 9 // starting zoom
+		    container: 'map',
+		    style: 'mapbox://styles/mapbox/streets-v9',
+		    center: [138.188,36.643],
+		    zoom: 5
 		});
 
-	// 	map.on('load', function() {
-	//     map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', function(error, image) {
-	//         if (error) throw error;
-	//         map.addImage('cat.png', image);
-	//         map.addLayer({
-	//             "id": "points",
-	//             "type": "symbol",
-	//             "source": {
-	//                 "type": "geojson",
-	//                 "data": {
-	//                     "type": "FeatureCollection",
-	//                     "features": [{
-	//                         "type": "Feature",
-	//                         "geometry": {
-	//                             "type": "Point",
-	//                             "coordinates": [0, 0]
-	//                         }
-	//                     }]
-	//                 }
-	//             },
-	//             "layout": {
-	//                 "icon-image": "cat.png",
-	//                 "icon-size": 0.25
-	//             }
-	//         });
-	//     });
-	// });
 
+		map.on('load', function () {
+	    // Add a layer showing the places.
+	    map.addLayer({
+	        "id": "places",
+	        "type": "symbol",
+	        "source": {
+	            "type": "geojson",
+	            "data": {
+	                "type": "FeatureCollection",
+	                "features": [{
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Tokyo</strong><p><a href=\"http://www.mtpleasantdc.com/makeitmtpleasant\" target=\"_blank\" title=\"Opens in a new window\">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>",
+	                        "icon": "theatre"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [139.691706, 35.689487]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Kyoto, Japan</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href=\"http://madmens5finale.eventbrite.com/\" target=\"_blank\" title=\"Opens in a new window\">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>",
+	                        "icon": "theatre"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [135.768029, 35.011636]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Fukishima</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href=\"http://tallulaeatbar.ticketleap.com/2012beachblanket/\" target=\"_blank\" title=\"Opens in a new window\">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>",
+	                        "icon": "bar"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [140.474728, 37.760834]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Shiboya, Tokyo Japan</strong><p>The <a href=\"http://ballstonarts-craftsmarket.blogspot.com/\" target=\"_blank\" title=\"Opens in a new window\">Ballston Arts & Crafts Market</a> sets up shop next to the Ballston metro this Saturday for the first of five dates this summer. Nearly 35 artists and crafters will be on hand selling their wares. 10:00-4:00 p.m.</p>",
+	                        "icon": "art-gallery"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [139.704051, 35.661777]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Shinjuku, Japan</strong><p>Feeling dandy? Get fancy, grab your bike, and take part in this year's <a href=\"http://dandiesandquaintrelles.com/2012/04/the-seersucker-social-is-set-for-june-9th-save-the-date-and-start-planning-your-look/\" target=\"_blank\" title=\"Opens in a new window\">Seersucker Social</a> bike ride from Dandies and Quaintrelles. After the ride enjoy a lawn party at Hillwood with jazz, cocktails, paper hat-making, and more. 11:00-7:00 p.m.</p>",
+	                        "icon": "bicycle"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [139.703549, 35.693840]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Capital Pride Parade</strong><p>The annual <a href=\"http://www.capitalpride.org/parade\" target=\"_blank\" title=\"Opens in a new window\">Capital Pride Parade</a> makes its way through Dupont this Saturday. 4:30 p.m. Free.</p>",
+	                        "icon": "star"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [-77.043444, 38.909664]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Muhsinah</strong><p>Jazz-influenced hip hop artist <a href=\"http://www.muhsinah.com\" target=\"_blank\" title=\"Opens in a new window\">Muhsinah</a> plays the <a href=\"http://www.blackcatdc.com\">Black Cat</a> (1811 14th Street NW) tonight with <a href=\"http://www.exitclov.com\" target=\"_blank\" title=\"Opens in a new window\">Exit Clov</a> and <a href=\"http://godsilla.bandcamp.com\" target=\"_blank\" title=\"Opens in a new window\">Gods’illa</a>. 9:00 p.m. $12.</p>",
+	                        "icon": "music"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [-77.031706, 38.914581]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>A Little Night Music</strong><p>The Arlington Players' production of Stephen Sondheim's  <a href=\"http://www.thearlingtonplayers.org/drupal-6.20/node/4661/show\" target=\"_blank\" title=\"Opens in a new window\"><em>A Little Night Music</em></a> comes to the Kogod Cradle at The Mead Center for American Theater (1101 6th Street SW) this weekend and next. 8:00 p.m.</p>",
+	                        "icon": "music"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [-77.020945, 38.878241]
+	                    }
+	                }, {
+	                    "type": "Feature",
+	                    "properties": {
+	                        "description": "<strong>Truckeroo</strong><p><a href=\"http://www.truckeroodc.com/www/\" target=\"_blank\">Truckeroo</a> brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>",
+	                        "icon": "music"
+	                    },
+	                    "geometry": {
+	                        "type": "Point",
+	                        "coordinates": [-77.007481, 38.876516]
+	                    }
+	                }]
+	            }
+	        },
+	        "layout": {
+	            "icon-image": "{icon}-15",
+	            "icon-allow-overlap": true
+	        }
+	    });
+
+	    // When a click event occurs on a feature in the places layer, open a popup at the
+	    // location of the feature, with description HTML from its properties.
+	    map.on('click', 'places', function (e) {
+	        new mapboxgl.Popup()
+	            .setLngLat(e.features[0].geometry.coordinates)
+	            .setHTML(e.features[0].properties.description)
+	            .addTo(map);
+	    });
+
+	    // Change the cursor to a pointer when the mouse is over the places layer.
+	    map.on('mouseenter', 'places', function () {
+	        map.getCanvas().style.cursor = 'pointer';
+	    });
+
+	    // Change it back to a pointer when it leaves.
+	    map.on('mouseleave', 'places', function () {
+	        map.getCanvas().style.cursor = '';
+		    });
+		});
+
+		// Add zoom and rotation controls to the map.
+		map.addControl(new mapboxgl.NavigationControl());
 		</script>
+		<!-- <script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoibWluYW1lbG9zaCIsImEiOiJjajl5bmg5NGExNjVxMnhtZGtqemh0dXpxIn0.YjhWR-UHUFpZk0PB0Q_JAg';
+	
+		 var map = new mapboxgl.Map({
+		     container: 'map', // container id
+		     style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+		    center: [-122.157929, 37.437890], // starting position [lng, lat]
+		    zoom: 9 // starting zoom
+		 });
+
+	
+
+		</script>  -->
 
 	</body>
 </html>
