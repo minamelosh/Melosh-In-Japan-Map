@@ -6,10 +6,16 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
+    <!-- <link rel="stylesheet" type="text/css" href="static/style.css"/> -->
+
+    <link rel="stylesheet" type="text/css" href="static/style.css"/>
+    <link rel="stylesheet" type="text/css" href="slick-1.8.0/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick-1.8.0/slick/slick-theme.css"/>
+
     <style>
             body { margin:0; padding:0; }
-             /*#map { position:absolute; top:0; bottom:0; width:100%; }*/
-            #map { position:absolute; top:0; bottom:0; height:700px; width: 85%; margin-top:100px; margin-left: 100px; margin-right: 100px; }
+             #map { position:absolute; top:0; bottom:0; width:100%; }
+            /*#map { position:absolute; top:0; bottom:0; height:700px; width: 85%; margin-top:100px; margin-left: 100px; margin-right: 100px; }*/
         </style>
 </head>
 
@@ -45,7 +51,7 @@
                         "features": [{
                             "type": "Feature",
                             "properties": {
-                                "description": "<strong>Tokyo</strong><p><a href=\"https://www.japan-guide.com/e/e2164.html\" target=\"_blank\" title=\"Opens in a new window\">The Capital of Japan</a> is a huge prefecture made up of many cities, everything about it felt remarkable and grand, Tokyo station alone felt like a five story mall!</p><img src=images/tokyo.jpg width=380 height=400>",
+                                "description": "<strong>Tokyo</strong><p><a href=\"https://www.japan-guide.com/e/e2164.html\" target=\"_blank\" title=\"Opens in a new window\">The Capital of Japan</a> is a huge prefecture made up of many cities, everything about it felt remarkable and grand, Tokyo station alone felt like a five story mall!</p><div class=your-class><div><img src=https://images.unsplash.com/photo-1485832329521-e944d75fa65e?auto=format&fit=crop&w=1500&q=80&ixid=d   99-93acdc0bd7c3?auto=format&fit=crop&w=1114&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D></img></div><div><img src=https://images.unsplash.com/photo-1487715433499-93acdc0bd7c3?auto=format&fit=crop&w=1114&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D></img></div></div>",
                                 "icon": "rail"
                             },
                             "geometry": {
@@ -66,7 +72,7 @@
                             "type": "Feature",
                             "properties": {
                                 "description": "<strong>Fukishima</strong><p>This is the prefecture where my mom grew up, far on the country side with lots of land and beautiful nature walks. Her little town with a crazy long name <a href=\https://en.wikipedia.org/wiki/Yamatsuri,_Fukushima\" target=\"_blank\" title=\"Opens in a new window\">Yamatsuri-Machi, Higashishirakawa-Gun, Fukushima</a> is the perfect place to get away.</p><img src=images/momshouse.jpg width=380 height=350>",
-                                "icon": "star"
+                                "icon": "garden"
                             },
                             "geometry": {
                                 "type": "Point",
@@ -76,7 +82,7 @@
                             "type": "Feature",
                             "properties": {
                                 "description": "<strong>Shiboya, Tokyo, Japan</strong><p>The <a href=\"https://hubjapan.io/articles/10-best-things-to-do-in-shibuya-to-enjoy-its-nightlife\" target=\"_blank\" title=\"Opens in a new window\">night life</a> and shopping is crazy here! I grew up near San Fransico, but we got nothing on this city!</p>",
-                                "icon": "star"
+                                "icon": "shop"
                             },
                             "geometry": {
                                 "type": "Point",
@@ -105,7 +111,7 @@
                         }, {
                             "type": "Feature",
                             "properties": {
-                                "description": "<strong>Sky Tree</strong><p>Jazz-influenced hip hop artist <a href=\"http://www.muhsinah.com\" target=\"_blank\" title=\"Opens in a new window\">Muhsinah</a> plays the <a href=\"http://www.blackcatdc.com\">Black Cat</a> (1811 14th Street NW) tonight with <a href=\"http://www.exitclov.com\" target=\"_blank\" title=\"Opens in a new window\">Exit Clov</a> and <a href=\"http://godsilla.bandcamp.com\" target=\"_blank\" title=\"Opens in a new window\">Gods’illa</a>. 9:00 p.m. $12.</p>",
+                                "description": "<strong>Sky Tree</strong><p>Sky Tree has amazing views and tons of shopping and eating options!</p>",
                                 "icon": "monument"
                             },
                             "geometry": {
@@ -158,6 +164,10 @@
                 .setLngLat(e.features[0].geometry.coordinates)
                 .setHTML(e.features[0].properties.description)
                 .addTo(map);
+
+
+            $('.your-class').slick();
+
         });
 
         // Change the cursor to a pointer when the mouse is over the places layer.
@@ -172,5 +182,10 @@
     });
 
     </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.js"></script>
+    <script type="text/javascript" src="slick-1.8.0/slick/slick.min.js"></script>
+
     </body>
 </html>
