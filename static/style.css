@@ -7,6 +7,9 @@ body { margin:0;
 h1 {
 	padding-top: 30px;
 	padding-left: 30px;
+	z-index:1000 !important;
+	position: absolute;
+	
 }
 
 .slick-list {
