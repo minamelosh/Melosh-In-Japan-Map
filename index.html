@@ -30,6 +30,7 @@
     <!-- <h1 style="text-align: center;">Melosh in Japan Map</h1> -->
     <div id='map'></div>
     <script>
+    
     mapboxgl.accessToken = 'pk.eyJ1IjoibWluYW1lbG9zaCIsImEiOiJjajl5bmg5NGExNjVxMnhtZGtqemh0dXpxIn0.YjhWR-UHUFpZk0PB0Q_JAg';
 
     var map = new mapboxgl.Map({
@@ -156,6 +157,72 @@
                     "icon-allow-overlap": true
                 }
             });
+
+        // map.on('load', function() {
+            // images/title.jpg
+    map.loadImage('images/title.jpg', function(error, image) {
+        if (error) throw error;
+        map.addImage('title', image);
+        map.addLayer({
+            "id": "points",
+            "type": "symbol",
+            "source": {
+                "type": "geojson",
+                "data": {
+                    "type": "FeatureCollection",
+                    "features": [{
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [138.282445, 41.378366]
+                        }
+                    }]
+                }
+            },
+            "layout": {
+                "icon-image": "title",
+                "icon-size": 0.25
+            }
+        });
+    });
+// });
+        var geojson = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "message": "Foo",
+                        "iconSize": [60, 60]
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            138.282445,
+                            41.378366
+                        ]
+                    }
+                }
+            ]
+        };
+
+        geojson.features.forEach(function(marker) {
+            // create a DOM element for the marker
+            var el = document.createElement('div');
+            el.className = 'marker';
+            el.style.backgroundImage = images/title.jpg;
+            el.style.width = marker.properties.iconSize[0] + 'px';
+            el.style.height = marker.properties.iconSize[1] + 'px';
+
+            el.addEventListener('click', function() {
+                window.alert(marker.properties.message);
+            });
+
+            // add marker to map
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+        });
 
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
