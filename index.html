@@ -41,7 +41,7 @@
             });
 
     map.on('load', function () {
-        // Add a layer showing the places.
+        // Add a layer with all the places I visited in Japan.
         map.addLayer({
                 "id": "places",
                 "type": "symbol",
@@ -122,7 +122,7 @@
                         }, {
                             "type": "Feature",
                             "properties": {
-                                "description": "<strong>Kyoto</strong><p>The Arlington Players' production of Stephen Sondheim's  <a href=\"http://www.thearlingtonplayers.org/drupal-6.20/node/4661/show\" target=\"_blank\" title=\"Opens in a new window\"><em>A Little Night Music</em></a> comes to the Kogod Cradle at The Mead Center for American Theater (1101 6th Street SW) this weekend and next. 8:00 p.m.</p><div class=pictures><div><img src=images/kyoto/kyoto.jpeg></img></div><div><img src=images/kyoto/kimonogarden.jpg></img></div><div><img src=images/kyoto/shops.jpeg></img></div><div><img src=images/kyoto/city.jpg></img></div><div><img src=images/kyoto/chicken.jpg></img></div></div>",
+                                "description": "<strong>Kyoto</strong><p><a href=\"https://www.japan-guide.com/e/e2158.html\" target=\"_blank\" title=\"Opens in a new window\"><em>Kyoto</em></a> has a special vibe much different from Tokyo - it may still be filled with people, lights, shops resturants and amazing tourist sites, but this city has it's own style and look that is worth checking out!</p><div class=pictures><div><img src=images/kyoto/kyoto.jpeg></img></div><div><img src=images/kyoto/kimonogarden.jpg></img></div><div><img src=images/kyoto/shops.jpeg></img></div><div><img src=images/kyoto/city.jpg></img></div><div><img src=images/kyoto/chicken.jpg></img></div></div>",
                                 "icon": "restaurant"
                             },
                             "geometry": {
@@ -158,73 +158,6 @@
                 }
             });
 
-//try add icon
-            // images/title.jpg
-    // map.loadImage('https://github.com/minamelosh/thrifty-shopping/blob/gh-pages/images/title.jpg', function(error, image) {
-    //     if (error) throw error;
-    //     map.addImage('images/title.jpg', image);
-    //     map.addLayer({
-    //         "id": "points",
-    //         "type": "symbol",
-    //         "source": {
-    //             "type": "geojson",
-    //             "data": {
-    //                 "type": "FeatureCollection",
-    //                 "features": [{
-    //                     "type": "Feature",
-    //                     "geometry": {
-    //                         "type": "Point",
-    //                         "coordinates": [138.282445, 41.378366]
-    //                     }
-    //                 }]
-    //             }
-    //         },
-    //         "layout": {
-    //             "icon-image": "images/title.jpg",
-    //             "icon-size": 0.25
-    //         }
-    //     });
-    // });
-
-    //try custom marker
-// // });
-//         var geojson = {
-//             "type": "FeatureCollection",
-//             "features": [
-//                 {
-//                     "type": "Feature",
-//                     "properties": {
-//                         "message": "Foo",
-//                         "iconSize": [60, 60]
-//                     },
-//                     "geometry": {
-//                         "type": "Point",
-//                         "coordinates": [
-//                             138.282445,
-//                             41.378366
-//                         ]
-//                     }
-//                 }
-//             ]
-//         };
-
-//         geojson.features.forEach(function(marker) {
-//             // create a DOM element for the marker
-//             var el = document.createElement('div');
-//             el.className = 'marker';
-//             el.style.backgroundImage = 'url(https://github.com/minamelosh/thrifty-shopping/blob/gh-pages/images/title.jpg';
-//             el.style.width = marker.properties.iconSize[0] + 'px';
-//             el.style.height = marker.properties.iconSize[1] + 'px';
-
-//             el.addEventListener('click', function() {
-//                 window.alert(marker.properties.message);
-//             });
-
-//             // add marker to map
-//             new mapboxgl.Marker(el)
-//                 .setLngLat(marker.geometry.coordinates)
-//                 .addTo(map);
-//         });
 
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
