@@ -9,7 +9,10 @@ h1 {
 	padding-left: 30px;
 	z-index:1000 !important;
 	position: absolute;
-	
+	font-family: 'Anton', sans-serif;
+		/*font-style: bolder;*/
+	font-size: 45px;
+
 }
 
 .slick-list {
