@@ -1,3 +1,3 @@
-# Thrifty Shopping!
+# Melosh In Japan Map
 
-# See your local thrift shops mapped out for you! With their ratings and iby other regular thrifters!
+# Look at a map of the places I visited on my trip to Japan! Click the icons for some information and images about my time there!
